@@ -3,14 +3,17 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
+import { useSideBarStore } from "@/store/Sidebar/SideBar.store";
 
 export const DashboardWrapper = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const isDarkMode = false;
-  const isSidebarCollapsed = false;
+  const isSidebarCollapsed = useSideBarStore(
+    (state) => state.isSidebarCollapsed
+  );
+  const isDarkMode = useSideBarStore((state) => state.isDarkMode);
   return (
     <div
       className={`${
