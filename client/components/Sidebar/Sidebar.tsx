@@ -1,7 +1,16 @@
 "use client";
 
 import { useSideBarStore } from "@/store/Sidebar/SideBar.store";
-import { Menu } from "lucide-react";
+import {
+  Archive,
+  CircleDollarSign,
+  Clipboard,
+  Layout,
+  Menu,
+  SlidersHorizontal,
+  User,
+} from "lucide-react";
+import SideBarLink from "./SideBarLink/SideBarLink";
 
 export const Sidebar = () => {
   const isSidebarCollapsed = useSideBarStore(
@@ -10,6 +19,35 @@ export const Sidebar = () => {
   const setIsSidebarCollapsed = useSideBarStore(
     (state) => state.setIsSidebarCollapsed
   );
+
+  const linksSidebar = [
+    {
+      href: "/dashboard",
+      icon: Layout,
+      label: "Dashboard",
+    },
+    { href: "/inventory", icon: Archive, label: "Inventory" },
+    {
+      href: "/products",
+      icon: Clipboard,
+      label: "Products",
+    },
+    {
+      href: "/users",
+      icon: User,
+      label: "Users",
+    },
+    {
+      href: "/settings",
+      icon: SlidersHorizontal,
+      label: "Settings",
+    },
+    {
+      href: "/expenses",
+      icon: CircleDollarSign,
+      label: "Expenses",
+    },
+  ];
 
   const sidebarClassNames = `fixed flex flex-col ${
     isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64"
@@ -42,7 +80,17 @@ export const Sidebar = () => {
       </div>
 
       {/* LINKS */}
-      <div className="grow mt-8"></div>
+      <div className="grow mt-8">
+        {linksSidebar.map((link) => (
+          <SideBarLink
+            href={link.href}
+            icon={link.icon}
+            key={link.href}
+            label={link.label}
+            isCollapsed={isSidebarCollapsed}
+          />
+        ))}
+      </div>
 
       {/* FOOTER */}
       <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
