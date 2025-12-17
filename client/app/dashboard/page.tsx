@@ -1,14 +1,13 @@
 "use client";
 
-import { use } from "react";
+import CardPopularProducts from "@/components/CardPopularProducts/CardPopularProducts";
 
-export default function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = use(params);
-  console.log("slug", slug);
+const Dashboard = () => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:overflow-auto gap-10 pb-4 custom-grid-rows">
+      <CardPopularProducts />
+    </div>
+  );
+};
 
-  return <>{slug}</>;
-}
+export default Dashboard;

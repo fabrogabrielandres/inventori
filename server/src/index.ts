@@ -18,13 +18,26 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+// app.use(cors());
+
+const allowedOrigins = process.env.CORS_ORIGINS ? 
+  process.env.CORS_ORIGINS.split(',').map(origin => origin.trim()) : 
+  [];
+
+console.log('Allowed origins:', allowedOrigins);
+
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+}));
 
 /* ROUTES */
 app.use("/dashboard", dashboardRoutes); // http://localhost:8000/dashboard
 
 /* SERVER */
-const port = Number(process.env.PORT) || 3001;
+const port = Number(process.env.PORT) || 8001;
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on port ${port}`);
 });

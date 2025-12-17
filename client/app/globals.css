@@ -220,3 +220,14 @@ body {
   --color-white: oklch(13% 0.028 261.692);
   --color-black: oklch(98.5% 0.002 247.839);
 }
+
+@media (min-width: 768px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 7.5vh);
+  }
+}
+@media (min-width: 768px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 20vh);
+  }
+}

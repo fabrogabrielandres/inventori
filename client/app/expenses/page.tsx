@@ -1,13 +1,10 @@
-"use client"
+"use client";
 
-import { use } from "react"
+import { useGetDashboardMetricsQuery } from "@/Hooks/useGetDashboardMetricsQuery";
 
-export default function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = use(params)
+export default function Page() {
+  const { data: dataa } = useGetDashboardMetricsQuery();
+  console.log(dataa, "dataa page expenses");
 
-  return <>{slug}</>
+  return <>slug</>;
 }
