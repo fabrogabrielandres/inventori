@@ -1,3 +1,4 @@
+"use client";
 import { useGetDashboardMetricsQuery } from "@/Hooks/useGetDashboardMetricsQuery";
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
