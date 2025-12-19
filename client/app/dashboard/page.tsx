@@ -1,4 +1,6 @@
+import CardExpenseSummary from "@/components/CardExpenseSummary/CardExpenseSummary";
 import CardPopularProducts from "@/components/CardPopularProducts/CardPopularProducts";
+import CardPurchaseSummary from "@/components/CardPurchaseSummary/CardPurchaseSummary";
 import CardSalesSummary from "@/components/CardSalesSummary/CardSalesSummary";
 
 const Dashboard = () => {
@@ -6,6 +8,8 @@ const Dashboard = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:overflow-auto gap-10 pb-4 custom-grid-rows">
       <CardPopularProducts />
       <CardSalesSummary />
+      <CardPurchaseSummary/>
+      <CardExpenseSummary />
     </div>
   );
 };
