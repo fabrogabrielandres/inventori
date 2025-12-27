@@ -28,12 +28,6 @@ export interface Product {
     stockQuantity: number;
 }
 
-export interface NewProduct {
-    name: string;
-    price: number;
-    rating?: number;
-    stockQuantity: number;
-}
 export interface PurchaseSummary {
     purchaseSummaryId: string;
     totalPurchased: number;

@@ -1,4 +1,4 @@
-import { DashboardMetrics, NewProduct, Product } from "@/interfaces/dashboard.interface";
+import { DashboardMetrics,  Product } from "@/interfaces/dashboard.interface";
 import { api } from "@/lib/axios.api";
 
 export const getdatadashboard = async () => {
@@ -16,7 +16,7 @@ export const getProducts = async (search: string | void) => {
 };
 
 
-export const createProduct = async (newProduct: NewProduct) => {
-    const data = await api.post<Product, NewProduct>("/products", { ...newProduct });
+export const createProduct = async (newProduct: Product) => {
+    const data = await api.post<Product, Product>("/products", { ...newProduct });
     return data;
 };
