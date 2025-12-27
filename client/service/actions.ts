@@ -15,8 +15,15 @@ export const getProducts = async (search: string | void) => {
     return data;
 };
 
-
 export const createProduct = async (newProduct: Product) => {
-    const data = await api.post<Product, Product>("/products", { ...newProduct });
+  try {
+    // No enviamos productId al backend
+    const { productId, ...productData } = newProduct;
+    
+    const { data } = await api.post<Product>("/products", productData);
     return data;
+  } catch (error) {
+    console.error("Error creating product:", error);
+    throw error;
+  }
 };
